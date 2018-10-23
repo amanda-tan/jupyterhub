@@ -91,5 +91,4 @@ RUN cd /tmp && \
     rm -rf yodapy && \
     fix-permissions $CONDA_DIR
 
-pip install -e .
 USER $NB_USER
