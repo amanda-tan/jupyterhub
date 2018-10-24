@@ -64,9 +64,7 @@ RUN git clone https://github.com/lsetiawan/yodapy.git && \
     conda create -n yodapy -c conda-forge --yes python=3.6 --file requirements.txt --file requirements-dev.txt && \
     source activate yodapy && \
     pip install -e . && \
-    conda clean -tipsy && \
-    source deactivate
-  
+    
 RUN rm -rf /home/$NB_USER/yodapy 
    
 # Activate ipywidgets extension in the environment that runs the notebook server
