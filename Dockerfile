@@ -57,7 +57,18 @@ RUN git clone https://github.com/oceanhackweek/ohw2018_tutorials.git && \
     conda clean -tipsy
 
 RUN rm -rf /home/$NB_USER/ohw2018_tutorials
-     
+
+# Pip install yodapy 
+RUN git clone https://github.com/lsetiawan/yodapy.git && \
+    cd yodapy && \
+    conda create -n yodapy -c conda-forge --yes python=3.6 --file requirements.txt --file requirements-dev.txt && \
+    source activate yodapy && \
+    pip install -e . && \
+    conda clean -tipsy && \
+    source deactivate
+  
+RUN rm -rf /home/$NB_USER/yodapy 
+   
 # Activate ipywidgets extension in the environment that runs the notebook server
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix 
 RUN jupyter nbextension enable --py ipyleaflet --sys-prefix
@@ -80,15 +91,5 @@ RUN cd /tmp && \
 ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions /home/$NB_USER
-
-# pip install yodapy
-RUN cd /tmp && \
-    git clone https://github.com/lsetiawan/yodapy.git && \
-    cd yodapy && \
-    conda create -n yodapy -c conda-forge --yes python=3.6 --file requirements.txt --file requirements-dev.txt && \
-    source activate yodapy && \
-    pip install -e . && \
-    rm -rf yodapy && \
-    fix-permissions $CONDA_DIR
 
 USER $NB_USER
