@@ -2,34 +2,70 @@ name: baseenv
 channels:
   - conda-forge
 dependencies:
-  - datashader
+  - python=3.6
   - altair
   - basemap
   - basemap-data-hires
+  - bokeh
+  - bokeh 
   - boto
   - boto3
-  - bokeh 
+  - cartopy
   - cloudpickle
+  - cmocean
+  - dask
+  - dask-ml
+  - datashader
   - dill
+  - earthsim
+  - erddapy
+  - fiona
+  - folium
+  - geolinks
+  - geopandas
+  - geoviews
+  - gridgeo
   - h5py 
-  - hdf5
+  - hvplot
+  - ioos_tools
   - ipyleaflet
   - ipywidgets
-  - widgetsnbextension
+  - iris>=1.12
+  - jupyter
+  - jupyter_contrib_nbextensions
+  - keras==2.1.6 
   - lxml
+  - matplotlib
+  - matplotlib 
+  - nb_conda_kernels
+  - netcdf4
   - networkx
   - numba
-  - owslib
+  - numpy
+  - obspy
   - obspy 
+  - owslib
+  - palettable
   - pandas
   - pillow
   - plotly
+  - pycamhd
+  - pyoos
+  - rasterio
   - requests
+  - rise
+  - rtree
   - scikit-learn
+  - scipy
   - seaborn
+  - shapely
+  - tensorboard==1.9.0
+  - tensorflow==1.9.0
   - vega
   - vega_datasets
+  - widgetsnbextension
   - xarray
+  - xlrd
   - pip:
     - python-cmr
     - dash==0.20.0
