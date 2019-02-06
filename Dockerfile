@@ -46,18 +46,6 @@ RUN conda env update --name root --file /home/$NB_USER/tmp/base-env.yml
 
 RUN rm -rf /home/$NB_USER/tmp
 
-# Install tutorial environments
-RUN git clone https://github.com/oceanhackweek/ohw2018_tutorials.git && \
-    cd ohw2018_tutorials && \
-    conda env update --name root --file day2/ioos_data_access/environment.yml && \
-    conda env update --name root --file day2/ooi_data_access/environment.yml && \
-    conda env update --name root --file day3/geospatial_and_mapping_tools/environment.yml && \
-    conda env update --name root --file day3/synoptics/environment.yml && \
-    conda env update --name root --file day4/data-mining/environment.yml && \
-    conda clean -tipsy
-
-RUN rm -rf /home/$NB_USER/ohw2018_tutorials
-
 # Pip install yodapy 
 RUN git clone https://github.com/lsetiawan/yodapy.git && \
     cd yodapy && \
