@@ -47,14 +47,15 @@ RUN conda env update --name root --file /home/$NB_USER/tmp/base-env.yml
 RUN rm -rf /home/$NB_USER/tmp
 
 # Pip install yodapy 
-RUN git clone https://github.com/lsetiawan/yodapy.git && \
+RUN git clone https://github.com/cormorack/yodapy.git && \
     cd yodapy && \
     conda create -n yodapy -c conda-forge --yes python=3.6 --file requirements.txt --file requirements-dev.txt && \
     source activate yodapy && \
     pip install -e . && \
+    rm -rf yodapy && \
+    fix-permissions $CONDA_DIR
     
-RUN rm -rf /home/$NB_USER/yodapy 
-   
+
 # Activate ipywidgets extension in the environment that runs the notebook server
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix 
 RUN jupyter nbextension enable --py ipyleaflet --sys-prefix
